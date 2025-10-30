@@ -365,16 +365,16 @@ flow.schema.json: ${PKGDIR}/bin/flowctl
 docker-image:
 	docker build \
 		--file .devcontainer/release.Dockerfile \
-		--tag ghcr.io/estuary/flow:${FLOW_VERSION} \
+		# --tag ghcr.io/estuary/flow:${FLOW_VERSION} \
 		--tag ghcr.io/estuary/flow:dev \
 		${PKGDIR}/
 
 .PHONY: docker-push
 docker-push:
-	docker push ghcr.io/estuary/flow:${FLOW_VERSION}
+	# docker push ghcr.io/estuary/flow:${FLOW_VERSION}
 
 # This is used by the GH Action workflow to push the 'dev' tag.
 # It is invoked only for builds on the master branch.
 .PHONY: docker-push-dev
 docker-push-dev:
-	docker push ghcr.io/estuary/flow:dev
+	# docker push ghcr.io/estuary/flow:dev
