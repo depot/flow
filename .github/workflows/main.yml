@@ -22,6 +22,12 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  # allow issuing OIDC tokens for this workflow run
+  id-token: write
+  # allow at least reading the repo contents, add other permissions if necessary
+  contents: read
+
 jobs:
   gnu-binaries:
     runs-on: depot-ubuntu-24.04-8
@@ -252,7 +258,16 @@ jobs:
       - name: Ensure that we didn't dirty the tree.
         run: git clean --force -d && git diff --exit-code || exit 1
 
-      - run: make docker-image
+      - uses: depot/setup-action@v1
+      - name: depot/build-push-action
+        uses: depot/build-push-action@v1
+        with:
+          project: p9qj1z28gd
+          context: ./.build/package
+          file: .devcontainer/release.Dockerfile
+          platforms: linux/amd64
+          tags: |
+            ghcr.io/estuary/flow:dev
 
       # - run: make docker-push
       # - if: ${{ github.ref == 'refs/heads/master' }}
