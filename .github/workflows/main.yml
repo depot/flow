@@ -23,7 +23,7 @@ concurrency:
 
 jobs:
   gnu-binaries:
-    runs-on: depot-ubuntu-24.04
+    runs-on: depot-ubuntu-24.04-8
 
     steps:
       - uses: actions/checkout@v2
@@ -95,7 +95,7 @@ jobs:
             target/x86_64-unknown-linux-gnu/release/librocksdb-exp/
 
   musl-binaries:
-    runs-on: depot-ubuntu-24.04
+    runs-on: depot-ubuntu-24.04-8
 
     steps:
       - uses: actions/checkout@v2
@@ -130,7 +130,7 @@ jobs:
             .build/package/bin/*
 
   assembly:
-    runs-on: depot-ubuntu-24.04
+    runs-on: depot-ubuntu-24.04-8
     needs: [gnu-binaries, musl-binaries]
 
     services:
