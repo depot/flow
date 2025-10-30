@@ -365,7 +365,6 @@ flow.schema.json: ${PKGDIR}/bin/flowctl
 docker-image:
 	docker build \
 		--file .devcontainer/release.Dockerfile \
-		# --tag ghcr.io/estuary/flow:${FLOW_VERSION} \
 		--tag ghcr.io/estuary/flow:dev \
 		${PKGDIR}/
 
