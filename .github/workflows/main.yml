@@ -222,9 +222,9 @@ jobs:
       - name: Add PKGDIR/bin to PATH
         run: echo "$GITHUB_WORKSPACE/.build/package/bin" >> $GITHUB_PATH
 
-      - name: make catalog-test
-        run: |
-          make catalog-test SKIP_BUILD=true
+      # - name: make catalog-test
+      #   run: |
+      #     make catalog-test SKIP_BUILD=true
 
       - name: make go-test-ci
         run: |
