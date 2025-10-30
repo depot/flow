@@ -21,7 +21,7 @@ fn main() -> Result<(), anyhow::Error> {
 
     let runtime = tokio::runtime::Builder::new_multi_thread()
         .enable_all()
-        .worker_threads(2)
+        .worker_threads(4)
         .build()
         .expect("failed to start runtime");
 
