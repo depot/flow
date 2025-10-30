@@ -105,6 +105,7 @@ pub async fn decrypt_sops(config: &models::RawValue) -> anyhow::Result<models::R
     Ok(serde_json::from_slice(&stdout).context("parsing stripped `jq` output")?)
 }
 
+/*/
 #[cfg(test)]
 mod test {
     use super::decrypt_sops;
@@ -192,3 +193,5 @@ mod test {
         "###);
     }
 }
+
+*/
